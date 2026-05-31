@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://6jydmfraquvs"]
+
+[ext_resource type="Script" uid="uid://b7gb07mwr26a5" path="res://componets/alert_state_machine_component.gd" id="1_sgiqa"]
+
+[node name="alert_state_machine_component" type="Node" unique_id=1882699989]
+script = ExtResource("1_sgiqa")

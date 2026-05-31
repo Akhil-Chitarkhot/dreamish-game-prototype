@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cyqpcwihyrwff"]
+
+[ext_resource type="Script" uid="uid://b2yberdf3fc8l" path="res://componets/stealth_component.gd" id="1_7k67h"]
+
+[node name="stealth_component" type="Node" unique_id=695717946]
+script = ExtResource("1_7k67h")

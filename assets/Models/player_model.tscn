@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bfdjrki7sp0nu"]
+
+[ext_resource type="PackedScene" uid="uid://w38p85dvllan" path="res://assets/Models/Bot.glb" id="1_s57l5"]
+
+[node name="Bot" unique_id=963581862 instance=ExtResource("1_s57l5")]
+
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(733558757) index="0" unique_id=939811089]
+bones/0/position = Vector3(-3.3016568e-05, 5.1621348e-05, -99.79187)
+bones/7/rotation = Quaternion(-0.45386916, -0.54482085, 0.55116683, -0.43975934)
+bones/8/position = Vector3(-3.3897965e-07, 12.92229, 1.2552537e-05)
+bones/8/rotation = Quaternion(-0.01047075, -0.0010647884, 0.101149425, 0.9948156)
+bones/10/position = Vector3(1.4843599e-06, 27.61445, 5.6648023e-06)
+bones/15/position = Vector3(-2.822044, 12.266623, 0.23183262)
+bones/16/position = Vector3(-9.9068416e-08, 3.8919673, -7.12721e-06)
+bones/17/position = Vector3(9.2706124e-08, 3.4151578, -1.4813006e-05)
+bones/18/position = Vector3(9.197161e-07, 3.0779827, -2.199257e-05)
+bones/20/position = Vector3(-2.7667363e-07, 3.613962, 1.0022994e-05)
+bones/26/position = Vector3(-2.3194163e-05, 3.660121, 1.75374e-05)
+bones/27/rotation = Quaternion(-6.875682e-07, 1.9031873e-07, -2.5759755e-07, 1)
+bones/28/rotation = Quaternion(1.6043123e-06, -4.4979004e-08, 3.8390897e-07, 1)
+bones/29/position = Vector3(2.86209e-07, 2.5948417, -6.1670307e-06)
+bones/29/rotation = Quaternion(-8.657117e-07, -7.685602e-08, 1.5061207e-07, 1)
+bones/31/rotation = Quaternion(0.45380357, -0.5448757, 0.5511122, 0.4398275)
+bones/32/position = Vector3(6.2813854e-07, 12.922285, -6.1741357e-06)
+bones/32/rotation = Quaternion(-0.01043551, 0.0010612543, -0.10114993, 0.99481595)
+bones/33/position = Vector3(1.3401177e-07, 27.404675, 1.4564939e-06)
+bones/37/position = Vector3(-2.3841767e-07, 4.3821425, -2.4825276e-06)
+bones/38/position = Vector3(1.0870227e-05, 3.4590695, -1.5892867e-05)
+bones/39/position = Vector3(2.822042, 12.266612, 0.23183851)
+bones/42/position = Vector3(-7.6540005e-07, 3.0779884, 3.0642732e-06)
+bones/44/position = Vector3(-2.0337217e-07, 3.6139693, -1.3659437e-05)
+bones/46/position = Vector3(2.9151486e-05, 3.6801891, 3.2062944e-06)
+bones/52/position = Vector3(8.511872e-07, 4.1366496, 8.131499e-06)
+bones/52/rotation = Quaternion(-1.1242529e-08, 2.6135663e-08, -8.884308e-08, 1)
+bones/53/position = Vector3(1.0098486e-06, 2.5948434, 8.669556e-06)
+bones/53/rotation = Quaternion(1.9614868e-07, 8.255088e-08, -3.9265586e-08, 1)
+bones/55/rotation = Quaternion(2.033628e-05, -0.0063398834, 0.9999755, -0.0029697402)
+bones/56/rotation = Quaternion(-0.018134091, 0.00018270871, -0.0059201415, 0.999818)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=1568275694]
+root_node = NodePath("../Armature/Skeleton3D")

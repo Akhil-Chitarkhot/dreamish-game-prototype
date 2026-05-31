@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://b1ot6gn6tms6h"]
+
+[ext_resource type="Script" uid="uid://b5ecua1qxlsek" path="res://player/player_3d_template.gd" id="1_dpokc"]
+[ext_resource type="PackedScene" uid="uid://cwp466ulujf6w" path="res://componets/camera_component.tscn" id="3_6y108"]
+[ext_resource type="PackedScene" uid="uid://bo057bco8rowl" path="res://componets/input_component.tscn" id="4_m3ubj"]
+[ext_resource type="PackedScene" uid="uid://bno7sko058pvw" path="res://componets/movement_component.tscn" id="5_bihfd"]
+[ext_resource type="Script" uid="uid://d1gh4ik8ng2m0" path="res://componets/grapple_component.gd" id="5_hlhab"]
+[ext_resource type="PackedScene" uid="uid://cgf2rcficxabg" path="res://componets/health_component.tscn" id="5_kht08"]
+[ext_resource type="PackedScene" uid="uid://ddtgihys8quvm" path="res://componets/armour_component.tscn" id="6_1rm0k"]
+[ext_resource type="PackedScene" uid="uid://466v705x3f61" path="res://componets/field_kit_component.tscn" id="7_epucm"]
+[ext_resource type="PackedScene" uid="uid://d38q6r3ks2jcj" path="res://componets/hit_receiver_component.tscn" id="8_2lqd2"]
+[ext_resource type="PackedScene" uid="uid://bjwuhc5n51ysc" path="res://componets/low_health_fx_component.tscn" id="9_nt1yt"]
+[ext_resource type="PackedScene" uid="uid://cyqpcwihyrwff" path="res://componets/stealth_component.tscn" id="11_1rm0k"]
+[ext_resource type="PackedScene" uid="uid://bfdjrki7sp0nu" path="res://assets/Models/player_model.tscn" id="12_1rm0k"]
+[ext_resource type="Script" uid="uid://c75kpqxssnnft" path="res://componets/stance_component.gd" id="12_epucm"]
+[ext_resource type="Script" uid="uid://c4kwe5g0eeqm5" path="res://componets/combat_component.gd" id="13_2lqd2"]
+[ext_resource type="Script" uid="uid://r3tr1bnhux53" path="res://componets/animation_component.gd" id="14_nt1yt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e8pdu"]
+radius = 0.4
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_h1hkf"]
+length = 0.5
+slide_on_slope = true
+
+[node name="Player3DTemplate" type="CharacterBody3D" unique_id=660522326]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_dpokc")
+
+[node name="Components" type="Node" parent="." unique_id=339957730]
+
+[node name="camera_component" parent="Components" unique_id=946338121 instance=ExtResource("3_6y108")]
+
+[node name="input_component" parent="Components" unique_id=195913079 instance=ExtResource("4_m3ubj")]
+
+[node name="movement_component" parent="Components" unique_id=1589400601 node_paths=PackedStringArray("visual_node") instance=ExtResource("5_bihfd")]
+visual_node = NodePath("../../Model")
+
+[node name="health_component" parent="Components" unique_id=1107272191 instance=ExtResource("5_kht08")]
+
+[node name="armour_component" parent="Components" unique_id=1010348180 instance=ExtResource("6_1rm0k")]
+
+[node name="field_kit_component" parent="Components" unique_id=1407450983 instance=ExtResource("7_epucm")]
+
+[node name="hit_receiver_component" parent="Components" unique_id=1890575737 instance=ExtResource("8_2lqd2")]
+
+[node name="low_health_fx_component" parent="Components" unique_id=1789629871 node_paths=PackedStringArray("health_component") instance=ExtResource("9_nt1yt")]
+health_component = NodePath("../health_component")
+
+[node name="grapple_component" type="Node3D" parent="Components" unique_id=886220837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+script = ExtResource("5_hlhab")
+
+[node name="GrappleOrigin" type="Marker3D" parent="Components/grapple_component" unique_id=109509932]
+
+[node name="stealth_component" parent="Components" unique_id=695717946 instance=ExtResource("11_1rm0k")]
+
+[node name="stance_component" type="Node" parent="Components" unique_id=118892634]
+script = ExtResource("12_epucm")
+
+[node name="combat_component" type="Node" parent="Components" unique_id=11387657 node_paths=PackedStringArray("stance")]
+script = ExtResource("13_2lqd2")
+stance = NodePath("../stance_component")
+
+[node name="animation_component" type="Node" parent="Components" unique_id=1511851408 node_paths=PackedStringArray("animation_tree", "stance_component", "movement_component", "combat_component")]
+script = ExtResource("14_nt1yt")
+animation_tree = NodePath("AnimationTree")
+stance_component = NodePath("../stance_component")
+movement_component = NodePath("../movement_component")
+combat_component = NodePath("../combat_component")
+
+[node name="AnimationTree" type="AnimationTree" parent="Components/animation_component" unique_id=986010227]
+
+[node name="CharacterCollisionShape" type="CollisionShape3D" parent="." unique_id=610270519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_e8pdu")
+
+[node name="Model" type="Node3D" parent="." unique_id=1849619286]
+
+[node name="Bot" parent="Model" unique_id=1401896404 instance=ExtResource("12_1rm0k")]
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1713686623]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09401, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=334992548]
+transform = Transform3D(-1, 2.1052e-08, -1.40279e-07, -3.23484e-08, 0.929023, 0.370022, 1.38112e-07, 0.370022, -0.929023, 0, 0.33984, 0)
+shape = SubResource("SeparationRayShape3D_h1hkf")
+spring_length = 8.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=1792989693]
+unique_name_in_owner = true
+transform = Transform3D(1, 3.19744e-14, 2.13163e-14, 0, 1, 0, 0, 0, 1, -2.4869e-14, 2.38419e-07, 10)
+current = true
+fov = 50.0

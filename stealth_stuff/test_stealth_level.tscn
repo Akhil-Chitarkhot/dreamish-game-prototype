@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://cnm7doai5cwg8"]
+
+[ext_resource type="Script" uid="uid://dsgg4u40mjmbn" path="res://stealth_stuff/threat_ceiling_component.gd" id="1_8v6cv"]
+[ext_resource type="PackedScene" uid="uid://bxhloqvulqvco" path="res://stealth_stuff/test_guard.tscn" id="1_i48vf"]
+[ext_resource type="Script" uid="uid://cwutv6i2lrn6b" path="res://componets/stealth_zone_component.gd" id="2_t0hx7"]
+[ext_resource type="PackedScene" uid="uid://b1ot6gn6tms6h" path="res://player/player_3d_template.tscn" id="4_vv361"]
+[ext_resource type="Script" uid="uid://vm53fuxvtbyy" path="res://stealth_stuff/stealth_debug_overlay.gd" id="5_32kvm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d0hx0"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_i48vf"]
+sky_material = SubResource("ProceduralSkyMaterial_d0hx0")
+
+[sub_resource type="Environment" id="Environment_8v6cv"]
+background_mode = 2
+sky = SubResource("Sky_i48vf")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i48vf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t0hx7"]
+size = Vector3(27, 5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vv361"]
+bg_color = Color(0, 0, 0, 0.6)
+
+[node name="TestStealthLevel" type="Node3D" unique_id=165920460]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=37968151]
+environment = SubResource("Environment_8v6cv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=473548504]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 30, 0)
+shadow_enabled = true
+
+[node name="Geometry" type="Node3D" parent="." unique_id=893731905]
+
+[node name="floor" type="CSGBox3D" parent="Geometry" unique_id=1912671640]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+use_collision = true
+collision_mask = 0
+size = Vector3(30, 0.1, 30)
+
+[node name="wall_01" type="CSGBox3D" parent="Geometry" unique_id=2061986662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.95, 14.506248)
+use_collision = true
+collision_mask = 0
+size = Vector3(30, 10, 1)
+
+[node name="wall_02" type="CSGBox3D" parent="Geometry" unique_id=52541599]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.95, -14.527148)
+use_collision = true
+collision_mask = 0
+size = Vector3(30, 10, 1)
+
+[node name="wall_03" type="CSGBox3D" parent="Geometry" unique_id=49766501]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 14.587237, 4.95, -0.037094116)
+use_collision = true
+collision_mask = 0
+size = Vector3(30, 10, 1)
+
+[node name="wall_04" type="CSGBox3D" parent="Geometry" unique_id=1226754321]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, -14.519864, 4.95, -0.037094116)
+use_collision = true
+collision_mask = 0
+size = Vector3(30, 10, 1)
+
+[node name="wall_05" type="CSGBox3D" parent="Geometry" unique_id=1623213737]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, -8.616823, 1.4500002, -0.037094116)
+use_collision = true
+collision_mask = 0
+size = Vector3(5, 3, 1)
+
+[node name="wall_06" type="CSGBox3D" parent="Geometry" unique_id=941787996]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 8.719809, 1.4500002, -0.037094116)
+use_collision = true
+collision_mask = 0
+size = Vector3(5, 3, 1)
+
+[node name="wall_07" type="CSGBox3D" parent="Geometry" unique_id=18992343]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.30783987, 1.4500002, 8.662083)
+use_collision = true
+collision_mask = 0
+size = Vector3(7, 3, 1)
+
+[node name="wall_08" type="CSGBox3D" parent="Geometry" unique_id=154806304]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.30783987, 1.4500002, -8.592361)
+use_collision = true
+collision_mask = 0
+size = Vector3(7, 3, 1)
+
+[node name="PatrolRoutes" type="Node3D" parent="." unique_id=31896936]
+
+[node name="GuardPatrol_01" type="Node3D" parent="PatrolRoutes" unique_id=1223893623]
+
+[node name="Point_A" type="Node3D" parent="PatrolRoutes/GuardPatrol_01" unique_id=876810427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 0, -4)
+
+[node name="Point_B" type="Node3D" parent="PatrolRoutes/GuardPatrol_01" unique_id=966849315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 0, 4)
+
+[node name="Point_C" type="Node3D" parent="PatrolRoutes/GuardPatrol_01" unique_id=1150735704]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 0, 4)
+
+[node name="Point_D" type="Node3D" parent="PatrolRoutes/GuardPatrol_01" unique_id=1831144533]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 0, -4)
+
+[node name="District_01" type="Area3D" parent="." unique_id=1853579473 groups=["district"]]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="District_01" unique_id=117866331]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+shape = SubResource("BoxShape3D_i48vf")
+
+[node name="threat_ceiling_component" type="Node" parent="District_01" unique_id=1671163512]
+script = ExtResource("1_8v6cv")
+
+[node name="Zone_Lit" type="Area3D" parent="District_01" unique_id=886890799]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="District_01/Zone_Lit" unique_id=1887945512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6279683, 0)
+shape = SubResource("BoxShape3D_t0hx7")
+
+[node name="stealth_zone_component" type="Node" parent="District_01/Zone_Lit" unique_id=1930429897]
+script = ExtResource("2_t0hx7")
+zone_type = 0
+detection_threshold = 0.25
+
+[node name="Zone_Shadow" type="Area3D" parent="District_01" unique_id=1267027897]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="District_01/Zone_Shadow" unique_id=1707032556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5100617, -12.439881)
+shape = SubResource("BoxShape3D_t0hx7")
+
+[node name="stealth_zone_component" type="Node" parent="District_01/Zone_Shadow" unique_id=355737680]
+script = ExtResource("2_t0hx7")
+
+[node name="test_guard" parent="District_01" unique_id=1492842116 node_paths=PackedStringArray("patrol_points") groups=["guard"] instance=ExtResource("1_i48vf")]
+collision_layer = 4
+patrol_points = [NodePath("../../PatrolRoutes/GuardPatrol_01/Point_A"), NodePath("../../PatrolRoutes/GuardPatrol_01/Point_B"), NodePath("../../PatrolRoutes/GuardPatrol_01/Point_C"), NodePath("../../PatrolRoutes/GuardPatrol_01/Point_D")]
+
+[node name="Player3DTemplate" parent="." unique_id=660522326 groups=["player"] instance=ExtResource("4_vv361")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11)
+
+[node name="DebugOverlay" type="CanvasLayer" parent="." unique_id=296514443]
+script = ExtResource("5_32kvm")
+
+[node name="DebugLabel" type="Label" parent="DebugOverlay" unique_id=1082398476]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -642.0
+offset_bottom = -138.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_vv361")

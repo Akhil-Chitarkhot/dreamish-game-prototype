@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://vtmp4lpmbll0"]
+
+[ext_resource type="Script" uid="uid://d1gh4ik8ng2m0" path="res://componets/grapple_component.gd" id="1_y5o0e"]
+
+[node name="grapple_component" type="Node3D" unique_id=1725089552]
+script = ExtResource("1_y5o0e")

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cjvx2ewkpn6xo"]
+
+[ext_resource type="Script" uid="uid://cvv3unk7mcfce" path="res://grapling hook mechcanics/grapple_point.gd" id="1_08247"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aicfd"]
+albedo_color = Color(0.021909695, 0.07325203, 0.9999997, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_08247"]
+material = SubResource("StandardMaterial3D_aicfd")
+
+[node name="GrapplePoint" type="Node3D" unique_id=25131188 node_paths=PackedStringArray("climb_destination")]
+script = ExtResource("1_08247")
+climb_destination = NodePath("ClimbDestination")
+
+[node name="ClimbDestination" type="Marker3D" parent="." unique_id=969824667]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1439544173]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_08247")

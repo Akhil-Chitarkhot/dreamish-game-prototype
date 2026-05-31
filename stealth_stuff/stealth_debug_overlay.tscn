@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cyha6rum06bp7"]
+
+[ext_resource type="Script" uid="uid://vm53fuxvtbyy" path="res://stealth_stuff/stealth_debug_overlay.gd" id="1_xlao8"]
+
+[node name="stealth_debug_overlay" type="CanvasLayer" unique_id=174756297]
+script = ExtResource("1_xlao8")

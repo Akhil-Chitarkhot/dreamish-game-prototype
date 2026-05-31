@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bxhloqvulqvco"]
+
+[ext_resource type="PackedScene" uid="uid://c0gcfkaiok0x1" path="res://componets/awareness_component.tscn" id="1_5chav"]
+[ext_resource type="Script" uid="uid://bs1tw601166nr" path="res://stealth_stuff/test_guard.gd" id="1_a7tmb"]
+[ext_resource type="PackedScene" uid="uid://6jydmfraquvs" path="res://componets/alert_state_machine_component.tscn" id="2_a7tmb"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0fpsu"]
+radius = 0.35
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vpcj"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgb21"]
+radius = 0.35
+height = 1.8
+
+[node name="test_guard" type="CharacterBody3D" unique_id=1492842116]
+script = ExtResource("1_a7tmb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=778632180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_0fpsu")
+surface_material_override/0 = SubResource("StandardMaterial3D_4vpcj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=581323678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_fgb21")
+
+[node name="EyePosition" type="Node3D" parent="." unique_id=1799562123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+
+[node name="awareness_component" parent="." unique_id=1605644609 instance=ExtResource("1_5chav")]
+
+[node name="alert_state_machine_component" parent="." unique_id=1882699989 node_paths=PackedStringArray("awareness_component") instance=ExtResource("2_a7tmb")]
+awareness_component = NodePath("../awareness_component")

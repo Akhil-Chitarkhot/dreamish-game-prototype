@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ddtgihys8quvm"]
+
+[ext_resource type="Script" uid="uid://d0gip1t1dxbwm" path="res://componets/armour_component.gd" id="1_hpcae"]
+
+[node name="armour_component" type="Node" unique_id=1010348180]
+script = ExtResource("1_hpcae")

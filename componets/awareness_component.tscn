@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c0gcfkaiok0x1"]
+
+[ext_resource type="Script" uid="uid://bu88lfik2lnsc" path="res://componets/awareness_component.gd" id="1_sflip"]
+
+[node name="awareness_component" type="Node" unique_id=1605644609]
+script = ExtResource("1_sflip")

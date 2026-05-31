@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://df2pt00mrl6f5"]
+
+[ext_resource type="Script" uid="uid://dsgg4u40mjmbn" path="res://stealth_stuff/threat_ceiling_component.gd" id="1_ijluk"]
+
+[node name="threat_ceiling_component" type="Node" unique_id=1393934287]
+script = ExtResource("1_ijluk")
